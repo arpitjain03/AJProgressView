@@ -10,6 +10,9 @@ import UIKit
 
 class AJProgressView: UIView {
     
+    //MARK: - DeviceType and ScreenSize
+    //MARK: -
+
     struct ScreenSize  {
         static let Width         = UIScreen.main.bounds.size.width
         static let Height        = UIScreen.main.bounds.size.height
