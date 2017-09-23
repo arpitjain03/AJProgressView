@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         objAJProgressView.imgLogo = UIImage(named:"twitterlogo")!
         
         // Pass the color for the layer of progressView
-        objAJProgressView.firstColor = UIColor.blue
+        objAJProgressView.firstColor = #colorLiteral(red: 0.001609396073, green: 0.6759747267, blue: 0.9307156205, alpha: 1)
         
         // If you  want to have layer of animated colors you can also add second and third color
         objAJProgressView.secondColor = #colorLiteral(red: 0.001609396073, green: 0.6759747267, blue: 0.9307156205, alpha: 1)
