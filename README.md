@@ -11,12 +11,10 @@ iOS 10.0 and Swift 4 are required.
 ## Installation
 Just Drag and Drop `AJProgressView.swift` in your project and set the image which to be used for AJProgressView.
 
-**NOTE:** For better result use image of atleast 128*128 dimension
+**NOTE:** For better result use image of at least 128*128 dimension
 
 ## Usage
-To see it clone the repo and run the sample project. It will show AJProgressView by some default image and color.
-
-For using it in your project :
+To see it in action clone the repo and run the sample project
 
 To show the AJProgressView
 ```swift
@@ -31,16 +29,16 @@ To check if AJProgressView is animating
 objAJProgressView.isAnimating
 ```
 
-## Customizations
+## Customisations
 
 ```swift
-// Pass your image here which will come in center of ProgressView
+// Pass your image here which will come in centre of ProgressView
 objAJProgressView.imgLogo = UIImage(named:"twitterlogo")!
 
-// Pass the color for the layer of progressView
+// Pass the colour for the layer of progressView
 objAJProgressView.firstColor = UIColor.blue
 
-// If you  want to have layer of animated colors you can also add second and third color
+// If you  want to have layer of animated colours you can also add second and third colour
 objAJProgressView.secondColor = UIColor.blue
 objAJProgressView.thirdColor = UIColor.blue
 
