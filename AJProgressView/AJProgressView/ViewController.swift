@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         //Get the status of progressView, if view is animating it will return true.
         _ = objAJProgressView.isAnimating
         
-        //Use show() and hide() to manage progress
+        //Use show() and hide() to manage progressView
         objAJProgressView.show()
     }
 
