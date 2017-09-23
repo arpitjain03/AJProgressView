@@ -50,15 +50,26 @@ class AJProgressView: UIView {
     //MARK: - Private Properties
     //MARK: -
 
-    // Pass any custom image and color here which you want to use for progressView
+    // Pass your image here which will be used for progressView
     public var imgLogo: UIImage = UIImage(named:"twitterlogo")!
+   
+    // Pass your color here which will be used as layer color
     public var firstColor: UIColor? = #colorLiteral(red: 0.001609396073, green: 0.6759747267, blue: 0.9307156205, alpha: 1)
    
+    // Add second and third colour if you want layer to have multiple colors. It will show animated colors on progressView layer
     public var secondColor: UIColor?
-    public var thirdColor: UIColor? 
+    public var thirdColor: UIColor?
+    
+    // Use this to set the speed of progressView
     public var duration: CGFloat = 5.0
+    
+    // Use this to set the line width of layer
     public var lineWidth: CGFloat = 4.0
+    
+    // Change background color of progressView
     public var bgColor = UIColor.clear
+   
+    // Returns bool for animating status of progressView
     public var isAnimating : Bool?
 
     //MARK: - AJProgressViewSetup Private Functions
@@ -216,7 +227,7 @@ class AJProgressView: UIView {
     //MARK: - Public Functions
     //MARK: -
 
-    public func SHOW() {
+    public func show() {
         
         self.setupAJProgressView()
         UIView.animate(withDuration: 0.3, animations: {() -> Void in
@@ -226,7 +237,7 @@ class AJProgressView: UIView {
         }, completion: {(finished: Bool) -> Void in })
     }
     
-    public func HIDE() {
+    public func hide() {
         
         UIView.animate(withDuration: 0.3, animations: {() -> Void in
             self.alpha = 0.0

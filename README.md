@@ -18,11 +18,11 @@ To see it in action clone the repo and run the sample project
 
 To show the AJProgressView
 ```swift
-objAJProgressView.SHOW()
+objAJProgressView.show()
 ```
 To hide the AJProgressView
 ```swift
-objAJProgressView.HIDE()
+objAJProgressView.hide()
 ```
 To check if AJProgressView is animating
 ```swift
@@ -49,7 +49,7 @@ objAJProgressView.duration = 3.0
 objAJProgressView.lineWidth = 4.0
 
 //Set backgroundColor of progressView
-objAJProgressView.backgroundColor =  UIColor.black.withAlphaComponent(0.2)
+objAJProgressView.bgColor =  UIColor.black.withAlphaComponent(0.2)
 ```
 
 ## License

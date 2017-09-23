@@ -32,13 +32,13 @@ class ViewController: UIViewController {
         objAJProgressView.lineWidth = 4.0
         
         //Set backgroundColor of progressView
-        objAJProgressView.backgroundColor =  UIColor.black.withAlphaComponent(0.2)
+        objAJProgressView.bgColor =  UIColor.black.withAlphaComponent(0.3)
         
         //Get the status of progressView, if view is animating it will return true.
         _ = objAJProgressView.isAnimating
         
-        //Use SHOW() and HIDE() to manage progress
-        objAJProgressView.SHOW()
+        //Use show() and hide() to manage progress
+        objAJProgressView.show()
     }
 
     override func didReceiveMemoryWarning() {
