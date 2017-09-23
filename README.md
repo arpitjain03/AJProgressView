@@ -3,7 +3,7 @@ A subclass of UIView for managing progress, which can be customized according to
 AJProgressView is well managed for all devices including landscape support.
 
 
-[![Simulator_Screen_Shot.png](https://s26.postimg.org/oz4sgc989/Simulator_Screen_Shot.png)](https://postimg.org/image/pbw6mirhx/)   ![GIF2](https://media.giphy.com/media/xT9Igu5ycjy9WDZd16/giphy.gif)
+[![Screen_Shot.png](https://s26.postimg.org/cg33w31kp/Screen_Shot.png)](https://postimg.org/image/fa699j3qt/)![GIF2](https://media.giphy.com/media/xT9Igu5ycjy9WDZd16/giphy.gif)
 
 ## Requirements
 iOS 10.0 and Swift 4 are required. 
