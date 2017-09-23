@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         objAJProgressView.thirdColor = #colorLiteral(red: 0.001609396073, green: 0.6759747267, blue: 0.9307156205, alpha: 1)
         
         // Set duration to control the speed of progressView
-        objAJProgressView.duration = 3.0
+        objAJProgressView.duration = 5.0
         
         // Set width of layer of progressView
         objAJProgressView.lineWidth = 4.0
