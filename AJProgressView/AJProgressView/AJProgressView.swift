@@ -8,41 +8,30 @@
 
 import UIKit
 
+// General object to fetch Sceeen width
+let SCREENWIDTH                            =   UIScreen.main.bounds.size.width
+
+// General object to fetch Sceeen height
+let SCREENHEIGHT                           =   UIScreen.main.bounds.size.height
+
 class AJProgressView: UIView {
-    
-    //MARK: - DeviceType and ScreenSize
-    //MARK: -
-
-    struct ScreenSize  {
-        static let Width         = UIScreen.main.bounds.size.width
-        static let Height        = UIScreen.main.bounds.size.height
-        static let Max_Length    = max(ScreenSize.Width, ScreenSize.Height)
-        static let Min_Length    = min(ScreenSize.Width, ScreenSize.Height)
-    }
-
-    struct DeviceType {
-        static let iPhone4  = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.Max_Length < 568.0
-        static let iPhone5_5s  = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.Max_Length == 568.0
-        static let iPhone6_6s_7 = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.Max_Length == 667.0
-        static let iPhone6P_6sP_7P = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.Max_Length == 736.0
-        static let iPhoneX = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.Max_Length == 812.0
-        static let iPad = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.Max_Length == 1024.0
-    }
     
     //MARK: - Private Properties
     //MARK: -
   
     private var objProgressView = UIView()
     private var shapeLayer = CAShapeLayer()
-    private var widthProgressView : CGFloat {
+    private var widthProgressView: CGFloat {
         
         var width = CGFloat()
-        if DeviceType.iPhone4 || DeviceType.iPhone5_5s{
-            width = ScreenSize.Min_Length*0.2
-        }else if DeviceType.iPhone6_6s_7 || DeviceType.iPhone6P_6sP_7P || DeviceType.iPhoneX{
-            width = ScreenSize.Min_Length*0.25
-        }else if DeviceType.iPad{
-            width = ScreenSize.Min_Length*0.15
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            width = SCREENWIDTH * 0.1
+        } else {
+            if SCREENWIDTH <= 568.0 {
+                width = SCREENWIDTH * 0.2
+            }else {
+                width = SCREENWIDTH * 0.25
+            }
         }
         return width
     }
@@ -79,12 +68,12 @@ class AJProgressView: UIView {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        if (appDelegate.window?.subviews.contains(objProgressView))! {
-            appDelegate.window?.bringSubview(toFront:objProgressView)
+        if appDelegate.window?.subviews.contains(objProgressView) ?? false {
+            appDelegate.window?.bringSubviewToFront(objProgressView)
             print("already there")
         }else{
             appDelegate.window?.addSubview(objProgressView)
-            appDelegate.window?.bringSubview(toFront: objProgressView)
+            appDelegate.window?.bringSubviewToFront(objProgressView)
         }
         objProgressView.backgroundColor = bgColor
         objProgressView.frame = UIScreen.main.bounds
@@ -94,7 +83,7 @@ class AJProgressView: UIView {
         self.frame = UIScreen.main.bounds
 
         let innerView = UIView()
-        innerView.frame = CGRect(x: (ScreenSize.Width - widthProgressView)/2, y: (ScreenSize.Height - widthProgressView)/2, width: widthProgressView, height: widthProgressView)
+        innerView.frame = CGRect(x: (SCREENWIDTH - widthProgressView)/2, y: (SCREENHEIGHT - widthProgressView)/2, width: widthProgressView, height: widthProgressView)
         innerView.backgroundColor = UIColor.clear
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeColor = firstColor?.cgColor
@@ -144,7 +133,7 @@ class AJProgressView: UIView {
         animation.duration = CFTimeInterval(duration / 2.0)
         animation.fromValue = 0
         animation.toValue = 1
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         return animation
     }
@@ -156,7 +145,7 @@ class AJProgressView: UIView {
         animation.duration = CFTimeInterval(duration / 2.0)
         animation.fromValue = 0
         animation.toValue = 1
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         return animation
     }
@@ -166,7 +155,7 @@ class AJProgressView: UIView {
         let animation = CABasicAnimation(keyPath: "transform.rotation.z")
         animation.fromValue = 0
         animation.toValue = CGFloat.pi * 2
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         animation.repeatCount = Float.infinity
         
         return animation
@@ -188,7 +177,7 @@ class AJProgressView: UIView {
         let animationGroup = CAAnimationGroup()
         animationGroup.animations = [animateStrokeEnd(), animateStrokeStart(), animateRotation(), animateColors()]
         animationGroup.duration = CFTimeInterval(duration)
-        animationGroup.fillMode = kCAFillModeBoth
+        animationGroup.fillMode = CAMediaTimingFillMode.both
         animationGroup.isRemovedOnCompletion = false
         animationGroup.repeatCount = Float.infinity
         shapeLayer.add(animationGroup, forKey: "loading")
@@ -206,10 +195,15 @@ class AJProgressView: UIView {
     
     private func configureColors() -> [CGColor] {
         var colors = [CGColor]()
-        colors.append((firstColor?.cgColor)!)
-        if secondColor != nil { colors.append((secondColor?.cgColor)!) }
-        if thirdColor != nil { colors.append((thirdColor?.cgColor)!) }
-        
+        if let thirdCgColor = firstColor?.cgColor {
+            colors.append((thirdCgColor))
+        }
+        if let secondCgColor = secondColor?.cgColor {
+            colors.append((secondCgColor))
+        }
+        if let thirdCgColor = thirdColor?.cgColor {
+            colors.append((thirdCgColor))
+        }        
         return colors
     }
     
